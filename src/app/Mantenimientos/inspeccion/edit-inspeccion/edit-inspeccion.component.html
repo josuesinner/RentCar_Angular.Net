@@ -1,0 +1,111 @@
+<div class="principal">
+    <h1>Edicion Inspeccion</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updateinspeccion()">
+        <section class="botones">
+            <div class="example-button-row">
+                <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  &nbsp;
+                  <button mat-fab color="warn" type="button" (click)="deleteinspeccion()">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+            </div>
+        </section>
+
+        <div class="divSecundary">
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Cod. Inspeccion</mat-label>
+                    <input matInput id="id_Transaccion" name="id_Transaccion" 
+                    [(ngModel)]="InspeccionDetalle.id_Transaccion" readonly>
+                  </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Vehiculo</mat-label>
+                    <mat-select name="marca" [(ngModel)]="InspeccionDetalle.vehiculoId" required>
+                        <mat-option  *ngFor="let item of vehiculoList" 
+                        [value]="item.id_Vehiculo">{{item.descripcion}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Cliente</mat-label>
+                    <mat-select name="clienteId" [(ngModel)]="InspeccionDetalle.clienteId" required>
+                        <mat-option  *ngFor="let item of clienteList" 
+                        [value]="item.id_Cliente">{{item.nombre}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Empleado</mat-label>
+                    <mat-select name="marca" [(ngModel)]="InspeccionDetalle.empleadoId" required>
+                        <mat-option  *ngFor="let item of empleadoList" 
+                        [value]="item.id_Empleado">{{item.nombre}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Cant. Combustible</mat-label>
+                    <mat-select name="tipo_Persona" 
+                    [(ngModel)]="InspeccionDetalle.cantidad_Combustible" required>
+                        <mat-option value="2 galones">2 galones</mat-option>
+                        <mat-option value="1 galon">1 galon</mat-option>
+                        <mat-option value="1/4 galon">1/4 galon</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha Inspeccion</mat-label>
+                    <input name="date" matInput [matDatepicker]="picker" 
+                    [(ngModel)]="InspeccionDetalle.fecha">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                <div>
+                    
+                    <mat-checkbox class="example-margin" id="tiene_Ralladuras" name="tiene_Ralladuras"
+                    [(ngModel)]="InspeccionDetalle.tiene_Ralladuras">Rayaduras</mat-checkbox>
+                    &nbsp;&nbsp;
+                    <mat-checkbox class="example-margin" id="goma_respuesta" name="goma_respuesta"
+                    [(ngModel)]="InspeccionDetalle.goma_respuesta">Goma Repuesta</mat-checkbox>
+                    &nbsp;&nbsp;
+                    <mat-checkbox class="example-margin" id="tiene_Gato" name="tiene_Gato"
+                    [(ngModel)]="InspeccionDetalle.tiene_Gato">Gato</mat-checkbox>
+                    &nbsp;&nbsp;
+                    <mat-checkbox class="example-margin" id="roturas_cristal" name="roturas_cristal"
+                    [(ngModel)]="InspeccionDetalle.roturas_cristal">Cristal Roto</mat-checkbox>
+                </div>
+                <br>
+                <div>
+                    <mat-label>
+                        <h2>Estado Gomas</h2>
+                    </mat-label>
+                    <mat-checkbox class="example-margin" id="izqFrontal" name="izqFrontal"
+                    [(ngModel)]="InspeccionDetalle.izqFrontal">Izq. Frontal</mat-checkbox>
+                    &nbsp;
+                    <mat-checkbox class="example-margin" id="derFrontal" name="derFrontal"
+                    [(ngModel)]="InspeccionDetalle.derFrontal">Der. Frontal</mat-checkbox>
+                    &nbsp;
+                    <mat-checkbox class="example-margin" id="izqTrasera" name="izqTrasera"
+                    [(ngModel)]="InspeccionDetalle.izqTrasera">Izq. Trasera</mat-checkbox>
+                    &nbsp;
+                    <mat-checkbox class="example-margin" id="derTrasera" name="derTrasera"
+                    [(ngModel)]="InspeccionDetalle.derTrasera">Der. Trasera</mat-checkbox>
+                </div>
+            </mat-card-content>
+        </div>
+
+        <mat-list>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+        <div class="divQuinto">
+            <mat-checkbox class="example-margin" id="estado" name="estado"
+                [(ngModel)]="InspeccionDetalle.estado">Estado</mat-checkbox>
+        </div>
+    </form>
+    </mat-card>
+</div>

@@ -1,0 +1,44 @@
+<div class="principal">
+    <h1>Edicion Tipo Vehiculo</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updatetipoVehiculo()">
+            <section class="botones">
+                <div class="example-button-row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      &nbsp;
+                      <button mat-fab color="warn" type="button" (click)="deletetipoVehiculo()">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+
+                </div>
+            </section>
+
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Codigo Tipo Vehiculo</mat-label>
+                        <input matInput id="id_Tipo_Vehiculo" name="id_Tipo_Vehiculo" [(ngModel)]="tipoVehiculoDetalle.id_Tipo_Vehiculo" readonly>
+                      </mat-form-field>
+                      &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Tipo Vehiculo</mat-label>
+                        <input matInput id="descripcion" name="descripcion" [(ngModel)]="tipoVehiculoDetalle.descripcion" required>
+                    </mat-form-field>
+
+                </mat-card-content>
+            </div>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado" [(ngModel)]="tipoVehiculoDetalle.estado">Estado</mat-checkbox>
+              </div>
+        </form>
+    </mat-card>
+</div>

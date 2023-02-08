@@ -1,0 +1,53 @@
+<div class="principal">
+    <h1>Edicion Modelos</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updatemodelo()">
+            <section class="botones">
+                <div class="example-button-row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      &nbsp;
+                      <!-- <button mat-fab color="warn" type="button" (click)="deletemodelo()">
+                        <mat-icon>delete</mat-icon>
+                      </button> -->
+
+                </div>
+            </section>
+
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Codigo Modelo</mat-label>
+                        <input matInput id="id_Modelo" name="id_Modelo" [(ngModel)]="modeloDetalle.id_Modelo" readonly>
+                      </mat-form-field>
+                      &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Modelo</mat-label>
+                        <input matInput id="descripcion" name="descripcion" [(ngModel)]="modeloDetalle.descripcion" required>
+                    </mat-form-field>
+
+                    &nbsp;&nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Marcas</mat-label>
+                        <mat-select name="marca" [(ngModel)]="modeloDetalle.marcaId" required>
+                          <mat-option  *ngFor="let item of marcaList" 
+                          [value]="item.id_Marca">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                </mat-card-content>
+            </div>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado" [(ngModel)]="modeloDetalle.estado">Estado</mat-checkbox>
+              </div>
+        </form>
+    </mat-card>
+</div>

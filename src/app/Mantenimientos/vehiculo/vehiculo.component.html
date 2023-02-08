@@ -1,0 +1,134 @@
+<div class="principal">
+    <h1>Gestion de Vehiculos</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="addvehiculo()">
+            <section class="botones">
+                <div class="example-button-row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="primary">
+                        <mat-icon>save</mat-icon>
+                    </button>
+                </div>
+            </section>
+
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Descripcion</mat-label>
+                        <input matInput id="Descripcion" name="Descripcion" [(ngModel)]="addvehiculoModel.descripcion" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Chasis</mat-label>
+                        <input matInput id="no_Chasis" name="no_Chasis" [(ngModel)]="addvehiculoModel.no_Chasis" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Motor</mat-label>
+                        <input matInput id="no_Motor" name="no_Motor" [(ngModel)]="addvehiculoModel.no_Motor" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Placa</mat-label>
+                        <input matInput id="no_Placa" name="no_Placa" [(ngModel)]="addvehiculoModel.no_Placa" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Tipo Vehiculo</mat-label>
+                        <mat-select name="tipo_Vehiculoid" [(ngModel)]="addvehiculoModel.tipo_VehiculoId" required>
+                            <mat-option  *ngFor="let item of tipoVehiculoList" [value]="item.id_Tipo_Vehiculo">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Marca</mat-label>
+                        <mat-select name="marca" [(ngModel)]="addvehiculoModel.marcaId" required>
+                            <mat-option  *ngFor="let item of marcaList" [value]="item.id_Marca">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Modelo</mat-label>
+                        <mat-select name="marca" [(ngModel)]="addvehiculoModel.modeloId" required>
+                            <mat-option  *ngFor="let item of modeloList" [value]="item.id_Modelo">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Combustible</mat-label>
+                        <mat-select name="marca" [(ngModel)]="addvehiculoModel.combustibleId" required>
+                            <mat-option  *ngFor="let item of combustibleList" [value]="item.id_Combustible">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+            </div>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Buscador...</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card>
+                <mat-card-content>
+
+
+                    <div class="divCuarto">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cod. Vehiculo</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">No. Chasis</th>
+                                    <th scope="col">No. Motor</th>
+                                    <th scope="col">No. Placa</th>
+                                    <th scope="col">Tipo Vehiculo</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Combustible</th>
+                                    <!-- <th scope="col">Estado</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of vehiculoList$|async">
+                                    <td>{{item.id_Vehiculo}}</td>
+                                    <td>{{item.descripcion}}</td>
+                                    <td>{{item.no_Chasis}}</td>
+                                    <td>{{item.no_Motor}}</td>
+                                    <td>{{item.no_Placa}}</td>
+                                    <td>{{item.tipo_Vehiculo.descripcion}}</td>
+                                    <td>{{item.marca.descripcion}}</td>
+                                    <td>{{item.modelo.descripcion}}</td>
+                                    <td>{{item.tipo_Combustible.descripcion}}</td>
+                                    <!-- <td>{{item.estado ? 'Activo': 'Inactivo'}}</td> -->
+                                    <td>
+                                        <button mat-fab color="accent" data-toggle="modal" data-target="#myModal"
+                                            (click)="goToeditvehiculo(item.id_Vehiculo)">
+                                            <mat-icon>rate_review</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado"
+                    [(ngModel)]="addvehiculoModel.estado">Estado</mat-checkbox>
+            </div>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,76 @@
+<div class="principal">
+    <h1>Edicion Empleado</h1>
+  
+    <mat-card>
+  
+  
+      <form (ngSubmit)="updateempleado()">
+        <section class="botones">
+          <div class="example-button-row">
+  
+            <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+              <mat-icon>edit</mat-icon>
+            </button>
+            &nbsp;
+            <button mat-fab color="warn" type="button" (click)="deleteempleado()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </section>
+
+        <div class="divSecundary">
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Codigo Empleado</mat-label>
+                    <input matInput id="id_Cliente" name="id_Cliente" [(ngModel)]="EmpleadoDetalle.id_Empleado" readonly>
+                  </mat-form-field>
+                  &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput id="nombre" name="nombre" [(ngModel)]="EmpleadoDetalle.nombre" required>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Cedula</mat-label>
+                    <input matInput id="cedula" name="cedula" [(ngModel)]="EmpleadoDetalle.cedula" required>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Comision</mat-label>
+                    <input matInput id="Comision" name="Comision"
+                        [(ngModel)]="EmpleadoDetalle.porciento_Comision" required>
+                </mat-form-field>
+                
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Horario</mat-label>
+                    <mat-select name="tipo_Persona" [(ngModel)]="EmpleadoDetalle.tanda_Labor" required>
+                        <mat-option value="Diurno">Diurno</mat-option>
+                        <mat-option value="Matutino">Matutino</mat-option>
+                        <mat-option value="Nocturno">Nocturno</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha Ingreso</mat-label>
+                    <input name="fecha_Ingreso" matInput [matDatepicker]="picker" [(ngModel)]="EmpleadoDetalle.fecha_Ingreso">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </mat-card-content>
+        </div>
+  
+        <mat-list>
+          <mat-divider></mat-divider>
+        </mat-list>
+  
+        <div class="divQuinto">
+          <mat-checkbox class="example-margin" id="estado" name="estado" [(ngModel)]="EmpleadoDetalle.estado">Estado</mat-checkbox>
+        </div>
+      </form>
+    </mat-card>
+  
+  
+  
+  </div>

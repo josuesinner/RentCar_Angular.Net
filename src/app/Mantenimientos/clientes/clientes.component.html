@@ -1,0 +1,118 @@
+<div class="principal">
+    <h1>Gestion Clientes</h1>
+
+    <mat-card>
+
+
+        <form action="" #form="ngForm" (ngSubmit)="addCliente()">
+            <section class="botones">
+                <div class="example-button-row">
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="primary" type="submit">
+                        <mat-icon>save</mat-icon>
+                    </button>
+
+                </div>
+            </section>
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput id="nombre" name="nombre" [(ngModel)]="addClienteModel.nombre" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cedula</mat-label>
+                        <input matInput id="cedula" name="cedula" [(ngModel)]="addClienteModel.cedula" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Tarjeta</mat-label>
+                        <input matInput id="no_Tarjeta_CR" name="no_Tarjeta_CR"
+                            [(ngModel)]="addClienteModel.no_Tarjeta_CR" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Limite Credito</mat-label>
+                        <input matInput id="limite_Credito" name="limite_Credito"
+                            [(ngModel)]="addClienteModel.limite_Credito" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Tipo Persona</mat-label>
+                        <mat-select name="tipo_Persona" [(ngModel)]="addClienteModel.tipo_Persona" required>
+                            <mat-option value="Fisica">Fisica</mat-option>
+                            <mat-option value="Juridica">Juridica</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+            </div>
+
+
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Buscador...</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card>
+                <mat-card-content>
+
+
+                    <div class="divCuarto">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cod. Cliente</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Cedula</th>
+                                    <th scope="col">No. Tarjeta</th>
+                                    <th scope="col">Límite Credito</th>
+                                    <th scope="col">Tipo Persona</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of clienteList$|async">
+                                    <td>{{item.id_Cliente}}</td>
+                                    <td>{{item.nombre}}</td>
+                                    <td>{{item.cedula}}</td>
+                                    <td>{{item.no_Tarjeta_CR}}</td>
+                                    <td>{{item.limite_Credito}}</td>
+                                    <td>{{item.tipo_Persona}}</td>
+                                    <td>{{item.estado ? 'Activo': 'Inactivo'}}</td>
+                                    <td>
+                                        <button mat-fab color="accent" data-toggle="modal" data-target="#myModal"
+                                            (click)="goToeditcliente(item.id_Cliente)">
+                                            <mat-icon>rate_review</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado"
+                    [(ngModel)]="addClienteModel.estado">Estado</mat-checkbox>
+            </div>
+        </form>
+    </mat-card>
+
+
+
+</div>

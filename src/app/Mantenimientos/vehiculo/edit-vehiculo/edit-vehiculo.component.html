@@ -1,0 +1,92 @@
+<div class="principal">
+    <h1>Edicion Vehiculo</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updatevehiculo()">
+            <section class="botones">
+                <div class="example-button-row">
+        
+                  <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  &nbsp;
+                  <button mat-fab color="warn" type="button" (click)="deletevehiculo()">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </section>
+
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Codigo Vehiculo</mat-label>
+                        <input matInput id="id_Vehiculo" name="id_Vehiculo" [(ngModel)]="vehiculoDetalle.id_Vehiculo" readonly>
+                      </mat-form-field>
+                      &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Descripcion</mat-label>
+                        <input matInput id="Descripcion" name="Descripcion" [(ngModel)]="vehiculoDetalle.descripcion" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Chasis</mat-label>
+                        <input matInput id="no_Chasis" name="no_Chasis" [(ngModel)]="vehiculoDetalle.no_Chasis" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Motor</mat-label>
+                        <input matInput id="no_Motor" name="no_Motor" [(ngModel)]="vehiculoDetalle.no_Motor" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>No. Placa</mat-label>
+                        <input matInput id="no_Placa" name="no_Placa" [(ngModel)]="vehiculoDetalle.no_Placa" required>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Tipo Vehiculo</mat-label>
+                        <mat-select name="tipo_Vehiculoid" [(ngModel)]="vehiculoDetalle.tipo_VehiculoId" required>
+                            <mat-option  *ngFor="let item of tipoVehiculoList" 
+                            [value]="item.id_Tipo_Vehiculo">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Marca</mat-label>
+                        <mat-select name="marca" [(ngModel)]="vehiculoDetalle.marcaId" required>
+                            <mat-option  *ngFor="let item of marcaList" 
+                            [value]="item.id_Marca">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Modelo</mat-label>
+                        <mat-select name="marca" [(ngModel)]="vehiculoDetalle.modeloId" required>
+                            <mat-option  *ngFor="let item of modeloList" 
+                            [value]="item.id_Modelo">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Combustible</mat-label>
+                        <mat-select name="marca" [(ngModel)]="vehiculoDetalle.combustibleId" required>
+                            <mat-option  *ngFor="let item of combustibleList" 
+                            [value]="item.id_Combustible">{{item.descripcion}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+            </div>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado" 
+                [(ngModel)]="vehiculoDetalle.estado">Estado</mat-checkbox>
+              </div>
+        </form>
+    </mat-card>
+</div>

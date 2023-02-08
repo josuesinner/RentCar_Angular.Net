@@ -1,0 +1,44 @@
+<div class="principal">
+    <h1>Edicion Combustible</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updatecombustible()">
+            <section class="botones">
+                <div class="example-button-row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      &nbsp;
+                      <button mat-fab color="warn" type="button" (click)="deletecombustible()">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+
+                </div>
+            </section>
+
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Codigo Combustible</mat-label>
+                        <input matInput id="id_Combustible" name="id_Combustible" [(ngModel)]="combustibleDetalle.id_Combustible" readonly>
+                      </mat-form-field>
+                      &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Combustible</mat-label>
+                        <input matInput id="combustible" name="combustible" [(ngModel)]="combustibleDetalle.descripcion" required>
+                    </mat-form-field>
+
+                </mat-card-content>
+            </div>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado" [(ngModel)]="combustibleDetalle.estado">Estado</mat-checkbox>
+              </div>
+        </form>
+    </mat-card>
+</div>

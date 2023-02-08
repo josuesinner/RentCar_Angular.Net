@@ -1,0 +1,44 @@
+<div class="principal">
+    <h1>Edicion Marca</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updatemarca()">
+            <section class="botones">
+                <div class="example-button-row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      &nbsp;
+                      <button mat-fab color="warn" type="button" (click)="deletemarca()">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+
+                </div>
+            </section>
+
+            <div class="divSecundary">
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Codigo Marca</mat-label>
+                        <input matInput id="id_Marca" name="id_Marca" [(ngModel)]="marcaDetalle.id_Marca" readonly>
+                      </mat-form-field>
+                      &nbsp; &nbsp;
+                    <mat-form-field appearance="fill">
+                        <mat-label>Marca</mat-label>
+                        <input matInput id="marca" name="marca" [(ngModel)]="marcaDetalle.descripcion" required>
+                    </mat-form-field>
+
+                </mat-card-content>
+            </div>
+
+            <mat-list>
+                <mat-divider></mat-divider>
+            </mat-list>
+
+            <div class="divQuinto">
+                <mat-checkbox class="example-margin" id="estado" name="estado" [(ngModel)]="marcaDetalle.estado">Estado</mat-checkbox>
+              </div>
+        </form>
+    </mat-card>
+</div>

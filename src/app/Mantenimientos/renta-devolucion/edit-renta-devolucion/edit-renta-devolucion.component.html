@@ -1,0 +1,113 @@
+<div class="principal">
+    <h1>Edicion Renta / Devolucion Vehiculos</h1>
+
+    <mat-card>
+        <form action="" #form="ngForm" (ngSubmit)="updaterenta()">
+        <section class="botones">
+            <div class="example-button-row">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-fab color="accent" data-toggle="modal" data-target="#myModal">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  &nbsp;
+                  <button mat-fab color="warn" type="button" (click)="deleterenta()">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+            </div>
+        </section>
+
+        <div class="divSecundary">
+            <mat-card-content>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Cod. Renta</mat-label>
+                    <input matInput id="no_Renta" name="no_Renta" 
+                    [(ngModel)]="rentaDetalle.no_Renta" readonly>
+                  </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Cliente</mat-label>
+                    <mat-select name="clienteId" 
+                    [(ngModel)]="rentaDetalle.clienteId">
+                        <mat-option  *ngFor="let item of clienteList" 
+                        [value]="item.id_Cliente">{{item.nombre}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Vehiculo</mat-label>
+                    <mat-select name="vehiculoId" [(ngModel)]="rentaDetalle.vehiculoId">
+                        <mat-option  *ngFor="let item of vehiculoList" 
+                        [value]="item.id_Vehiculo">{{item.descripcion}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Empleado</mat-label>
+                    <mat-select name="empleadoId" [(ngModel)]="rentaDetalle.empleadoId">
+                        <mat-option  *ngFor="let item of empleadoList" 
+                        [value]="item.id_Empleado">{{item.nombre}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Comentarios</mat-label>
+                    <input matInput id="comentario" name="comentario" 
+                    [(ngModel)]="rentaDetalle.comentario">
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Monto X Dias</mat-label>
+                    <input matInput id="monto_Dia" name="monto_Dia" 
+                    [(ngModel)]="rentaDetalle.monto_Dia">
+                </mat-form-field>
+
+                &nbsp; &nbsp;
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha Desde</mat-label>
+                    <input name="date1" matInput [matDatepicker]="picker1" 
+                    [(ngModel)]="rentaDetalle.fecha_Renta" (dateChange)="handlerFecha()">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                &nbsp; &nbsp;
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha Hasta</mat-label>
+                    <input name="date2" matInput [matDatepicker]="picker2" 
+                    [(ngModel)]="rentaDetalle.fecha_Devolucion" (dateChange)="handlerFecha()">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+
+                &nbsp; &nbsp;
+                <mat-form-field appearance="fill">
+                    <mat-label>Cant. Dias</mat-label>
+                    <input matInput id="cantidad_dias" name="cantidad_dias" 
+                    [(ngModel)]="rentaDetalle.cantidad_dias" readonly>
+                </mat-form-field>
+                
+            </mat-card-content>
+        </div>
+
+        <mat-list>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+        <div class="divQuinto">
+            <mat-checkbox class="example-margin" id="devolucion" name="devolucion"
+                [(ngModel)]="rentaDetalle.devolucion">Devuelto</mat-checkbox>
+        </div>
+
+        <mat-list>
+            <mat-divider></mat-divider>
+        </mat-list>
+
+        <div class="divQuinto">
+            <mat-checkbox class="example-margin" id="estado" name="estado"
+                [(ngModel)]="rentaDetalle.estado">Estado</mat-checkbox>
+        </div>
+    </form>
+    </mat-card>
+</div>
